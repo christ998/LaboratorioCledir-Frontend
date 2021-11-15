@@ -17,7 +17,7 @@ function MenuList() {
                 {/*</ul>*/}
                 <List>
                     <ListItemButton>
-                        <ListItemText>Home</ListItemText>
+                        <ListItemText classes="font-links">Home</ListItemText>
                         <ListItemIcon>
                             <ExpandMoreIcon></ExpandMoreIcon>
                         </ListItemIcon>
