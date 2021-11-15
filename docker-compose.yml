@@ -1,11 +1,11 @@
 version: "3"
 services:
   frontend:
-    image: frontend-lab
+    image: lab-frontend
     ports:
       - "80:80"
   backend:
-    image: backend-lab
+    image: lab-backend
     ports:
       - "3000:3000"
   mongodb:
