@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;500;600&display=swap');
 
-$margin-ul:16px;
-$padding-menu: $margin-ul;
+$font-weight: 18;
 
 body{
   font-family: 'Inter' ,sans-serif;
@@ -9,10 +8,6 @@ body{
 ul {
   display: flex;
   align-items: center;
-}
-
-.font-links{
-  font-weight: 600;
 }
 
 //ul li{
