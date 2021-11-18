@@ -1,9 +1,10 @@
+import ItemDropDown from "../components/ItemDropDown";
+import ListItemDropDown from "../components/ListItemDropDown";
+
 function Buscador() {
-  return (
-    <div>
-      <h1>Buscador</h1>
-    </div>
-  );
+    return (
+        <ListItemDropDown/>
+    );
 }
 
 export default Buscador;
