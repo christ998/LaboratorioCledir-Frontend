@@ -1,5 +1,4 @@
-import * as React from 'react';
-import { useTheme } from '@mui/material/styles';
+import {useTheme} from '@mui/material/styles';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
@@ -7,6 +6,8 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import '../styles/ListItemDropDown.scss'
 import {Box} from "@mui/material";
+import {useState} from "react";
+
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
 const MenuProps = {
@@ -18,19 +19,6 @@ const MenuProps = {
     },
 };
 
-const names = [
-    'Oliver Hansen',
-    'Van Henry',
-    'April Tucker',
-    'Ralph Hubbard',
-    'Omar Alexander',
-    'Carlos Abbott',
-    'Miriam Wagner',
-    'Bradley Wilkerson',
-    'Virginia Andrews',
-    'Kelly Snyder',
-];
-
 function getStyles(name, personName, theme) {
     return {
         fontWeight:
@@ -40,47 +28,50 @@ function getStyles(name, personName, theme) {
     };
 }
 
-function ItemDropDown() {
+
+function ItemDropDown(props) {
     const theme = useTheme();
-    const [personName, setPersonName] = React.useState([]);
+    const [operationName, setOperationName] = useState('');
+    const [names, setNames] = useState(props.names ? props.names : [])
+    const {handleValue, onEmpty} = props
 
     const handleChange = (event) => {
-        const {
-            target: { value },
-        } = event;
-        setPersonName(
-            // On autofill we get a the stringified value.
-            typeof value === 'string' ? value.split(',') : value,
-        );
+        setOperationName(event.target.value)
+        handleValue(event.target.value)
     };
 
-    return (
-        <div>
-            <Box width={300} textAlign={"center"} fontFamily={"Montserrat"} fontSize={16} >Criterio</Box>
-
-            <FormControl sx={{ m: 1, width: 300 }}>
+    const body = () => {
+        return (
+            <FormControl sx={{m: 1, width: 300}} error={onEmpty}>
                 <InputLabel id="demo-multiple-name-label">Name</InputLabel>
                 <Select
                     labelId="demo-multiple-name-label"
                     id="demo-multiple-name"
-                    multiple
-                    value={personName}
+                    value={operationName}
                     onChange={handleChange}
-                    input={<OutlinedInput label="Name" />}
+                    input={<OutlinedInput label="Name"/>}
                     MenuProps={MenuProps}
                 >
                     {names.map((name) => (
                         <MenuItem
                             key={name}
                             value={name}
-                            style={getStyles(name, personName, theme)}
+                            style={getStyles(name, operationName, theme)}
                         >
                             {name}
                         </MenuItem>
                     ))}
                 </Select>
-            </FormControl>
+            </FormControl>)
+    }
+
+    return (
+        <div>
+            <Box width={300} textAlign={"center"} fontFamily={"Montserrat"} fontSize={16}>Criterio</Box>
+            {body()}
+
         </div>
     );
 }
+
 export default ItemDropDown
