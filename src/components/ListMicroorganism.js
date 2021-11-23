@@ -7,8 +7,9 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import DescriptionIcon from '@mui/icons-material/Description';
 import '../styles/ListMicroorganism.scss'
-import {createTheme, TableFooter, TablePagination, ThemeProvider} from "@mui/material";
-import {useEffect, useState} from "react";
+import {Button, createTheme, TableFooter, TablePagination, ThemeProvider} from "@mui/material";
+import {useEffect, useRef, useState} from "react";
+import ModalMicroorganism from "./ModalMicroorganism";
 
 
 export default function ListMicroorganism(props) {
@@ -30,34 +31,30 @@ export default function ListMicroorganism(props) {
     const [rows, setRows] = useState([])
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(10);
+    const [openModal, setOpenModal] = useState(false)
+    const [infoModal, setInfoModal] = useState({}) // Info de un microorganismo para mostrar en el modal
 
     const handleChangePage = (event, newPage) => {
         setPage(newPage);
     };
-
+    const handleOpenModal = (e) => {
+        setInfoModal(e)
+        setOpenModal(true)
+    }
     const handleChangeRowsPerPage = (event) => {
         setRowsPerPage(parseInt(event.target.value, 10));
         setPage(0);
     };
 
+    const handleCloseModal = () => {
+        setOpenModal(false)
+    }
+
     useEffect(() => {
         // fetchData()
         setRows(data)
     }, [])
-    //
-    // const fetchData = async () => {
-    //     try {
-    //         const dataFetched = await axios.get('http://localhost:4000/all')
-    //         dataFetched.data.forEach((item) => {
-    //             let newMicroorganism = createData(item['Microorganism Type'], item['Strain code'], item['Species'],
-    //                 item['History of Deposit'], item['Date of Isolation'])
-    //             setRows(old => [...old, newMicroorganism])
-    //         })
-    //
-    //     } catch (e) {
-    //         console.error(e)
-    //     }
-    // }
+
     return (
         <ThemeProvider theme={theme}>
 
@@ -74,11 +71,8 @@ export default function ListMicroorganism(props) {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {(rowsPerPage > 0 ? rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage) : rows).map((row) => (
-                            <TableRow
-                                key={row['Strain code']}
-                                sx={{border: 0}}
-                            >
+                        {(rowsPerPage > 0 ? rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage) : rows).map((row, index) => (
+                            <TableRow sx={{border: 0}} key={index}>
                                 <TableCell>
                                     {row['Microorganism Type']}
                                 </TableCell>
@@ -86,15 +80,20 @@ export default function ListMicroorganism(props) {
                                 <TableCell align="right">{row['Species']}</TableCell>
                                 <TableCell align="right">{row['History of Deposit']}</TableCell>
                                 <TableCell align="right">{row['Date of Isolation']}</TableCell>
-                                <TableCell align="right"><a href=""><DescriptionIcon/></a></TableCell>
+                                <TableCell align="right">
+                                    <Button onClick={() => handleOpenModal(row)}>
+                                        <DescriptionIcon/>
+                                    </Button>
+                                </TableCell>
+
                             </TableRow>
+
                         ))}
                     </TableBody>
                     <TableFooter>
                         <TableRow>
                             <TablePagination
                                 rowsPerPageOptions={[5, 10, 15]}
-                                component="div"
                                 count={rows.length}
                                 rowsPerPage={rowsPerPage}
                                 page={page}
@@ -105,6 +104,7 @@ export default function ListMicroorganism(props) {
                     </TableFooter>
                 </Table>
             </TableContainer>
+            <ModalMicroorganism info={infoModal} isOpen={openModal} handleCloseModal={handleCloseModal}/>
 
         </ThemeProvider>
 

@@ -46,7 +46,7 @@ function ListItemDropDown(props) {
 
     return (
         <Box display="flex" justifyItems={"center"} alignItems={"end"}>
-            <ItemDropDown onEmpty={empty.isCriteria} handleValue={(operationName) => {setCriteria(operationName)}} names={['Taxon name', 'Strain code']}/>
+            <ItemDropDown onEmpty={empty.isCriteria} handleValue={(operationName) => {setCriteria(operationName); setEmpty({...empty, isCriteria: false})}} names={['Species', 'Strain code']}/>
             <ItemDropDown handleValue={(operationName) => setCriterionTwo(operationName)}
                           names={['Starts with..']}/>
             <TextField error={empty.isStrainCode} onChange={(e) => setNameMic(e.target.value)} sx={{mb: '8px', mr: '8px'}}

@@ -6,7 +6,7 @@ import {
     ListItemIcon,
     ListItemText,
 } from "@mui/material";
-import '../styles/MenuList.scss'
+import '../../styles/MenuList.scss'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import {useState} from "react";
