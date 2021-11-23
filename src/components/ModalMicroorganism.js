@@ -21,24 +21,7 @@ const style = {
 
 export default function ModalMicroorganism(props) {
     const {handleCloseModal, isOpen, info} = props
-
-    const [sp, setSP] = useState({}) // sp es microrganismo
-
-    useEffect(() => {
-        console.log(Object.entries(info))
-    }, [info])
-
-    function deploy() {
-        const tags = Object.entries(info).map((item, index) => (
-            <Grid item md={6} key={index}>
-                <Typography>{item[0]}</Typography>
-            </Grid>
-        // <Grid item md={6} key={index}>
-        //     <Typography>{item[1]}</Typography>
-        // </Grid>
-    ))
-    }
-
+    
     return (
         <div>
             <Modal
@@ -52,7 +35,7 @@ export default function ModalMicroorganism(props) {
                         Characteristic
                     </Typography>
                     <Grid container spacing={2} rowSpacing={5} wrap="wrap">
-                        {Object.entries(info).map((item, index) => (
+                        {Object.entries(info).map((item) => (
                             <>
                                 <Grid item md={6}>
                                     {item[0]}
