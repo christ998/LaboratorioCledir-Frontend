@@ -21,7 +21,7 @@ const style = {
 
 export default function ModalMicroorganism(props) {
     const {handleCloseModal, isOpen, info} = props
-    
+
     return (
         <div>
             <Modal

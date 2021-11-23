@@ -6,7 +6,7 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import '../styles/ListItemDropDown.scss'
 import {Box} from "@mui/material";
-import {useState} from "react";
+import React from "react";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -19,44 +19,58 @@ const MenuProps = {
     },
 };
 
-function getStyles(name, personName, theme) {
-    return {
-        fontWeight:
-            personName.indexOf(name) === -1
-                ? theme.typography.fontWeightRegular
-                : theme.typography.fontWeightMedium,
+// function getStyles(name, personName, theme) {
+//     return {
+//         fontWeight:
+//             personName.indexOf(name) === -1
+//                 ? theme.typography.fontWeightRegular
+//                 : theme.typography.fontWeightMedium,
+//     };
+// }
+
+
+class ItemDropDown extends React.Component {
+
+    // theme = useTheme();
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            operationName: '',
+            names: this.props.names ? this.props.names : [],
+        }
+    }
+
+    reset = () => {
+        this.setState({
+            operationName: '',
+        })
+    }
+
+    handleChange = (event) => {
+        this.setState({
+            operationName: event.target.value
+        })
+        this.props.handleValue(event.target.value)
     };
-}
 
-
-function ItemDropDown(props) {
-    const theme = useTheme();
-    const [operationName, setOperationName] = useState('');
-    const [names, setNames] = useState(props.names ? props.names : [])
-    const {handleValue, onEmpty} = props
-
-    const handleChange = (event) => {
-        setOperationName(event.target.value)
-        handleValue(event.target.value)
-    };
-
-    const body = () => {
+    body = () => {
         return (
-            <FormControl sx={{m: 1, width: 300}} error={onEmpty}>
+            <FormControl sx={{m: 1, width: 300}} error={this.props.onEmpty}>
                 <InputLabel id="demo-multiple-name-label">Name</InputLabel>
                 <Select
                     labelId="demo-multiple-name-label"
                     id="demo-multiple-name"
-                    value={operationName}
-                    onChange={handleChange}
+                    value={this.state.operationName}
+                    onChange={this.handleChange}
                     input={<OutlinedInput label="Name"/>}
                     MenuProps={MenuProps}
                 >
-                    {names.map((name) => (
+                    {this.props.names.map((name) => (
                         <MenuItem
                             key={name}
                             value={name}
-                            style={getStyles(name, operationName, theme)}
+
                         >
                             {name}
                         </MenuItem>
@@ -65,13 +79,16 @@ function ItemDropDown(props) {
             </FormControl>)
     }
 
-    return (
-        <div>
-            <Box width={300} textAlign={"center"} fontFamily={"Montserrat"} fontSize={16}>Criterio</Box>
-            {body()}
+    render() {
+        return (
+            <div>
+                <Box width={300} textAlign={"center"} fontFamily={"Montserrat"} fontSize={16}>Criterio</Box>
+                {this.body()}
 
-        </div>
-    );
+            </div>
+        )
+    }
+
 }
 
 export default ItemDropDown
