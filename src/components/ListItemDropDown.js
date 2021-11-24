@@ -4,7 +4,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import '../styles/ListItemDropDown.scss'
 import axios from "axios";
-import {useEffect, useRef, useState} from "react";
+import { useRef, useState} from "react";
 
 
 function ListItemDropDown(props) {

@@ -1,6 +1,7 @@
 import ListMicroorganism from "../components/ListMicroorganism";
 import ListItemDropDown from "../components/ListItemDropDown";
 import {useEffect, useState} from "react";
+import ListInventory from "../components/Tables/ListInventory";
 
 
 function Buscador() {
@@ -24,7 +25,7 @@ function Buscador() {
     return (
         <div>
             <ListItemDropDown onSearch={handleTableData}/>
-            {ready ? (<ListMicroorganism data={data}/>
+            {ready ? (<ListInventory data={data}/>
             ) : null}
         </div>
 
