@@ -1,31 +1,33 @@
 import ListMicroorganism from "../components/ListMicroorganism";
 import ListItemDropDown from "../components/ListItemDropDown";
-import {useEffect, useState} from "react";
-import ListInventory from "../components/Tables/ListInventory";
-
-
+import { useState} from "react";
+import requestMicroorganism from "../requests/Microorganisms";
+const {getMicroorganism} = requestMicroorganism
 function Buscador() {
     const [data, setData] = useState([])
     const [ready, setReady] = useState(false)
 
-    const handleTableData = (microorganism) => {
+    const handleTableData = () => {
         if (ready === false) {
-            setData(microorganism)
             setReady(true)
 
         } else {
             setReady(false)
-            setData(microorganism)
             setReady(true)
         }
+    }
 
+    const onSearch = async (parameters) =>{
+        const data = await getMicroorganism(parameters)// Devuelve el data del request
+        setData(data)
+        handleTableData()
     }
 
 
     return (
         <div>
-            <ListItemDropDown onSearch={handleTableData}/>
-            {ready ? (<ListInventory data={data}/>
+            <ListItemDropDown onSearch={(parameters) => onSearch(parameters)}/>
+            {ready ? (<ListMicroorganism data={data}/>
             ) : null}
         </div>
 

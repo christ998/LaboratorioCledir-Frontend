@@ -8,7 +8,7 @@ import Paper from '@mui/material/Paper';
 import DescriptionIcon from '@mui/icons-material/Description';
 import '../styles/ListMicroorganism.scss'
 import {Button, createTheme, Skeleton, TableFooter, TablePagination, ThemeProvider} from "@mui/material";
-import {useEffect, useRef, useState} from "react";
+import {useEffect, useState} from "react";
 import ModalMicroorganism from "./ModalMicroorganism";
 
 

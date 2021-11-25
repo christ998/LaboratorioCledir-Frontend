@@ -1,9 +1,10 @@
 import {useEffect, useState} from "react";
-import {Box, Button, TextField} from "@mui/material";
+import {Alert, Box, Button, TextField} from "@mui/material";
 import Modal from "@mui/material/Modal";
-import axios from "axios";
 import LoadingButton from '@mui/lab/LoadingButton';
+import requestMicroorganism from "../requests/Microorganisms";
 
+const {updateStock} = requestMicroorganism
 
 const style = {
     position: 'absolute',
@@ -18,29 +19,36 @@ const style = {
     wordWrap: "break-word"
 };
 export default function ModalInventory(props) {
-    const {handleCloseModal, isOpen, info} = props
-
-    const [open, setOpen] = useState(false)
+    const {handleCloseModal, isOpen, info, refreshOnUpdate} = props
     const [stock, setStock] = useState()
     const [isUpdating, setIsUpdating] = useState(false)
+    const [someError, setSomeError] = useState(false)
+    const [isUpdated, setIsUpdated] = useState(false)
 
     useEffect(() => {
         setStock(info['Samples stock'])
     }, [info])
 
-    const updateStock = async (e) => {
+    const updateStockOfMicroorganism = async (e) => {
         e.preventDefault()
         setIsUpdating(true)
         setTimeout(async () => {
-            const res = await axios.post("http://localhost:4000/add", {
+            const res = await updateStock({
                 '_id': info['_id'],
                 'Samples stock': stock
             })
             if (res.status == 200) {
                 setIsUpdating(false)
+                setIsUpdated(true)
+                setTimeout(() => {
+                    handleCloseModal()
+                    refreshOnUpdate()
+                }, 1000)
+            } else {
+                setSomeError(true)
             }
 
-        }, 3000)
+        }, 1000)
 
     };
 
@@ -52,7 +60,13 @@ export default function ModalInventory(props) {
             aria-describedby="modal-modal-description"
         >
             <Box sx={style}>
-                <form onSubmit={updateStock}>
+                {isUpdated &&
+                <Box pb="30px">
+                    <Alert severity="success">Stock Updated!</Alert>
+                </Box>
+                }
+
+                <form onSubmit={updateStockOfMicroorganism}>
                     <TextField
                         id="outlined-number"
                         label="Stock"
@@ -64,10 +78,18 @@ export default function ModalInventory(props) {
                             shrink: true,
                         }}
                     />
+                    {someError &&
+                    <Box>
+                        {someError}
+                    </Box>
+                    }
                     {isUpdating ?
                         <LoadingButton loading variant="contained" sx={{mt: '10px', ml: '30px'}}>Submit</LoadingButton>
                         :
-                        <Button type="submit" variant="contained" sx={{mt: '10px', ml: '30px'}}>Actualizar</Button>
+                        !isUpdated && (
+                            <Button type="submit" variant="contained" sx={{mt: '10px', ml: '30px'}}>Actualizar</Button>
+
+                        )
                     }
                 </form>
 

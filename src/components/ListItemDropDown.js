@@ -3,14 +3,14 @@ import ItemDropDown from "./ItemDropDown";
 import SearchIcon from '@mui/icons-material/Search';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import '../styles/ListItemDropDown.scss'
-import axios from "axios";
 import { useRef, useState} from "react";
+import requestMicroorganism from "../requests/Microorganisms";
+const {getMicroorganism} = requestMicroorganism
 
 
 function ListItemDropDown(props) {
     const [criteria, setCriteria] = useState('')
     const [empty, setEmpty] = useState({isCriteria: false, isStrainCode: false})
-    const [criterionTwo, setCriterionTwo] = useState('')
     const [nameMic, setNameMic] = useState('')
     let inputChild = useRef()
     const {onSearch} = props
@@ -34,10 +34,9 @@ function ListItemDropDown(props) {
         return isValid
     }
 
-    async function search() {
+     async function search() {
         if (validate()) {
-            const dataFetched = await axios.get('http://localhost:4000/micparticular', {params: {[criteria]: nameMic}})
-            onSearch(dataFetched.data)
+            onSearch({params: {[criteria]: nameMic}})
         } else {
             return
         }
@@ -55,8 +54,7 @@ function ListItemDropDown(props) {
                 setCriteria(operationName);
                 setEmpty({...empty, isCriteria: false})
             }} names={['Species', 'Strain code']}/>
-            <ItemDropDown handleValue={(operationName) => setCriterionTwo(operationName)}
-                          names={['Starts with..']}/>
+
             <TextField value={nameMic} error={empty.isStrainCode} onChange={(e) => setNameMic(e.target.value)}
                        sx={{mb: '8px', mr: '8px'}}
                        id="demo-helper-text-misaligned-no-helper" label="Name"/>
