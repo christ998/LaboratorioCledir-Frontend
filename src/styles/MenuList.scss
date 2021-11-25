@@ -10,12 +10,10 @@ ul {
   align-items: center;
 }
 
-//ul li{
-//  display: flex;
-//  list-style: none;
-//  padding-right: 40px;
-//  font-weight: 600;
-//  font-size: 18px;
-//  align-items: center;
-//}
+.attach{
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%);
+}
 

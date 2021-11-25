@@ -32,8 +32,8 @@ function MenuList() {
         }
     }
     return (
-        <div>
-            <Box sx={{backgroundColor: '#ACDDF3', py: '5px', borderRadius: '9px 9px 0 0', maxWidth: '532px'}}>
+        <div className="attach">
+            <Box sx={{backgroundColor: '#ACDDF3', py: '5px', borderRadius: '9px 9px 0 0', maxWidth: '532px', margin: "auto"}}>
                 <List>
                     <ListItemButton>
                         <ListItemText disableTypography={true} sx={fontSize}>Home</ListItemText>

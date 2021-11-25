@@ -5,13 +5,10 @@ const requestMicroorganism = {
         return res.data
     },
 
-    updateStock: async (parameters) => {
+    createOrUpdate: async (parameters) => {
         const res = await axios.post('/add', parameters)
         return res
     },
-
-
-
 
 }
 

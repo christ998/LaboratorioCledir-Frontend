@@ -4,7 +4,7 @@ import Modal from "@mui/material/Modal";
 import LoadingButton from '@mui/lab/LoadingButton';
 import requestMicroorganism from "../requests/Microorganisms";
 
-const {updateStock} = requestMicroorganism
+const {createOrUpdate} = requestMicroorganism
 
 const style = {
     position: 'absolute',
@@ -34,7 +34,7 @@ export default function ModalInventory(props) {
         setIsUpdating(true)
         setTimeout(async () => {
             try {
-                const res = await updateStock({
+                const res = await createOrUpdate({
                     '_id': info['_id'],
                     'Samples stock': stock
                 })
@@ -51,7 +51,6 @@ export default function ModalInventory(props) {
                 setTimeout(() =>{
                     handleCloseModal()
                 }, 3000)
-                console.log(e)
             }
 
 
