@@ -33,20 +33,28 @@ export default function ModalInventory(props) {
         e.preventDefault()
         setIsUpdating(true)
         setTimeout(async () => {
-            const res = await updateStock({
-                '_id': info['_id'],
-                'Samples stock': stock
-            })
-            if (res.status == 200) {
-                setIsUpdating(false)
-                setIsUpdated(true)
-                setTimeout(() => {
-                    handleCloseModal()
-                    refreshOnUpdate()
-                }, 1000)
-            } else {
+            try {
+                const res = await updateStock({
+                    '_id': info['_id'],
+                    'Samples stock': stock
+                })
+                if (res.status == 200) {
+                    setIsUpdating(false)
+                    setIsUpdated(true)
+                    setTimeout(() => {
+                        handleCloseModal()
+                        refreshOnUpdate()
+                    }, 1000)
+                }
+            }catch (e) {
                 setSomeError(true)
+                setTimeout(() =>{
+                    handleCloseModal()
+                }, 3000)
+                console.log(e)
             }
+
+
 
         }, 1000)
 
@@ -65,6 +73,11 @@ export default function ModalInventory(props) {
                     <Alert severity="success">Stock Updated!</Alert>
                 </Box>
                 }
+                {someError &&
+                <Box>
+                    <Alert severity="error">Error, no hay conexión</Alert>
+                </Box>
+                }
 
                 <form onSubmit={updateStockOfMicroorganism}>
                     <TextField
@@ -78,11 +91,7 @@ export default function ModalInventory(props) {
                             shrink: true,
                         }}
                     />
-                    {someError &&
-                    <Box>
-                        {someError}
-                    </Box>
-                    }
+
                     {isUpdating ?
                         <LoadingButton loading variant="contained" sx={{mt: '10px', ml: '30px'}}>Submit</LoadingButton>
                         :
