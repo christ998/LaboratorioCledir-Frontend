@@ -2,10 +2,7 @@ import {Box, Button, TextField} from "@mui/material";
 import ItemDropDown from "./ItemDropDown";
 import SearchIcon from '@mui/icons-material/Search';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
-import '../styles/ListItemDropDown.scss'
 import { useRef, useState} from "react";
-import requestMicroorganism from "../requests/Microorganisms";
-const {getMicroorganism} = requestMicroorganism
 
 
 function ListItemDropDown(props) {

@@ -2,7 +2,7 @@ import React from "react";
 import MenuList from "./MenuList";
 import {Box, CardMedia} from "@mui/material";
 import { styled } from '@mui/material/styles';
-import photo from "../../Assets/Images/Header/back.jpg"
+import photo from "../../Assets/Images/Header/header.jpg"
 
 const Img = styled('img')({
     display: 'block',

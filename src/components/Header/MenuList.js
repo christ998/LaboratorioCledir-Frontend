@@ -34,7 +34,7 @@ function MenuList() {
     return (
         <div className="attach">
             <Box sx={{backgroundColor: '#ACDDF3', py: '5px', borderRadius: '9px 9px 0 0', maxWidth: '532px', margin: "auto"}}>
-                <List>
+                <List className="menu-list">
                     <ListItemButton>
                         <ListItemText disableTypography={true} sx={fontSize}>Home</ListItemText>
                         <ListItemIcon>
