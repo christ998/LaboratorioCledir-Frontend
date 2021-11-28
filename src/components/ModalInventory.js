@@ -24,9 +24,11 @@ export default function ModalInventory(props) {
     const [isUpdating, setIsUpdating] = useState(false)
     const [someError, setSomeError] = useState(false)
     const [isUpdated, setIsUpdated] = useState(false)
+    const [link, setLink] = useState('')
 
     useEffect(() => {
         setStock(info['Samples stock'])
+        setLink(info['Link'])
     }, [info])
 
     const updateStockOfMicroorganism = async (e) => {
@@ -36,7 +38,8 @@ export default function ModalInventory(props) {
             try {
                 const res = await createOrUpdate({
                     '_id': info['_id'],
-                    'Samples stock': stock
+                    'Samples stock': stock,
+                    'Link': link
                 })
                 if (res.status == 200) {
                     setIsUpdating(false)
@@ -69,7 +72,7 @@ export default function ModalInventory(props) {
             <Box sx={style}>
                 {isUpdated &&
                 <Box pb="30px">
-                    <Alert severity="success">Stock Updated!</Alert>
+                    <Alert severity="success">Updated!</Alert>
                 </Box>
                 }
                 {someError &&
@@ -85,6 +88,19 @@ export default function ModalInventory(props) {
                         type="number"
                         value={stock}
                         onChange={(e) => setStock(e.target.value)}
+
+                        InputLabelProps={{
+                            shrink: true,
+                        }}
+                    />
+                    <br/>
+                    <br/>
+                    <TextField
+                        id="outlined-number"
+                        label="Link"
+                        type="url"
+                        value={link}
+                        onChange={(e) => setLink(e.target.value)}
 
                         InputLabelProps={{
                             shrink: true,

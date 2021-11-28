@@ -3,6 +3,7 @@ import {useState} from "react";
 import ListInventory from "../components/Tables/ListInventory";
 import requestMicroorganism from "../requests/Microorganisms";
 import {Alert, Skeleton} from "@mui/material";
+import Header from "../components/Header/Header";
 
 const {getMicroorganism} = requestMicroorganism
 
@@ -48,6 +49,7 @@ function Inventario() {
 
     return (
         <div>
+            <Header/>
             <ListItemDropDown onSearch={(parameters) => onSearch(parameters)}/>
             {someError &&
             <Alert severity="error">Sem conexão com o banco de dados</Alert>

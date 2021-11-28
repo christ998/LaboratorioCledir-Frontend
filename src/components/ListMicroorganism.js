@@ -7,7 +7,7 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import DescriptionIcon from '@mui/icons-material/Description';
 import '../styles/ListMicroorganism.scss'
-import {Button, createTheme, Skeleton, TableFooter, TablePagination, ThemeProvider} from "@mui/material";
+import {Button, createTheme, Link, Skeleton, TableFooter, TablePagination, ThemeProvider} from "@mui/material";
 import {useEffect, useState} from "react";
 import ModalMicroorganism from "./ModalMicroorganism";
 
@@ -92,7 +92,13 @@ export default function ListMicroorganism(props) {
                                         <TableCell>
                                             {row['Microorganism Type']}
                                         </TableCell>
-                                        <TableCell align="right">{row['Strain code']}</TableCell>
+                                        <TableCell align="right">
+                                            {row['Link'] != '' ?
+                                                <Link target="_blank" href={row['Link']} rel="noreferrer">{row['Strain code']}</Link>
+                                                :
+                                                row['Strain code']
+                                            }
+                                        </TableCell>
                                         <TableCell align="right">{row['Species']}</TableCell>
                                         <TableCell align="right">{row['History of Deposit']}</TableCell>
                                         <TableCell align="right">{row['Date of Isolation']}</TableCell>
