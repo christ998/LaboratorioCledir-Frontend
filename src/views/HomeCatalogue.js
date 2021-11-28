@@ -1,11 +1,18 @@
 import Header from "../components/Header/Header";
-import {Box, Container, Grid, Paper, Typography} from "@mui/material";
-
+import {Box, Container, Grid, Link, Paper, Typography} from "@mui/material";
+import "../styles/HomeCatalogue.scss"
 export default function HomeCatalogue() {
     const optionsStyle = {
         background: 'linear-gradient(180deg, rgba(172, 223, 243, 1) 35%, rgba(0, 177, 255, 1) 100%)',
         padding: '50px'
     }
+
+    const aStyle = {
+        textdecoration: 'none',
+        color: 'black',
+        textDecorationLine: 'none',
+    }
+
 
     return (
         <>
@@ -17,17 +24,27 @@ export default function HomeCatalogue() {
                         <Typography variant="h4" display={"inline-block"}>Choose an option</Typography><br/><br/><br/>
                         <Grid container justifyContent="center" spacing={5}>
                             <Grid item>
-                                <div style={optionsStyle}>Add Microorganism</div>
+                                <Link href="/agregar" style={aStyle}>
+                                    <div className="onHover" style={optionsStyle}>
+                                        Add Microorganism
+                                    </div>
+                                </Link>
                             </Grid>
                             <Grid item >
-                                <div style={optionsStyle}>
-                                    Inventory
-                                </div>
+                                <Link  style={aStyle} href="/inventario">
+                                    <div className="onHover" style={optionsStyle}>
+                                        Inventory
+                                    </div>
+                                </Link>
+
                             </Grid>
-                            <Grid item >
-                                <div style={optionsStyle}>
-                                    Search Microorganism
-                                </div>
+                            <Grid item>
+                                <Link style={aStyle} href="/">
+                                    <div className="onHover" style={optionsStyle}>
+                                        Search Microorganism
+                                    </div>
+                                </Link>
+
                             </Grid>
                         </Grid>
                     </Box>

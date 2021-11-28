@@ -1,3 +1,6 @@
 
-.background-option {
+.onHover:hover {
+  box-shadow: 5px 5px 5px grey;
+  transform: translate(-5px, -5px);
+  transition: 0.3s;
 }
