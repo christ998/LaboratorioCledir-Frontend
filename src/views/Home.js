@@ -1,4 +1,4 @@
-import {Box, Container, createTheme, Link, Paper, ThemeProvider, Typography} from "@mui/material";
+import {Container, createTheme, Paper, ThemeProvider, Typography} from "@mui/material";
 import "../styles/Home.scss"
 import {styled} from "@mui/material/styles";
 import photo from '../Assets/Images/Home/ufro.png'

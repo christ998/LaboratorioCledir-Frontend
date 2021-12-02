@@ -1,11 +1,9 @@
 import {TextField} from "@mui/material";
 import PersonIcon from '@mui/icons-material/Person';
 import LockIcon from '@mui/icons-material/Lock';
-import {useState} from "react";
-export default function InputField(props){
 
-    const [input, setInput] = useState('')
-    const value = props
+export default function InputField(props){
+    const { setInput } = props;
 
     const icon = () => {
         if (props.variant == 'email'){
