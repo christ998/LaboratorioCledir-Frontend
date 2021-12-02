@@ -19,11 +19,15 @@ export default function Home() {
     return (
         <><ThemeProvider theme={theme}>
 
-            <Paper sx={{mx: '0px'}}>
+            <Paper sx={{mx: '0px', display: 'grid', gridTemplateColumns: 'auto auto auto'}}>
                 <Img src={photo}/>
+                <Typography variant="h4" textAlign={"center"}>MICROBIOLOGICAL<br/>
+                    RESOURCE BANK<br/>
+                    UNIVERSIDAD DE LA FRONTERA mRB-UFRO
+                </Typography>
             </Paper>
             <Container>
-                <Typography variant="h4">MICROBIOLOGICAL RESOURCE BANK UNIVERSIDAD DE LA FRONTERA MRB-UFRO</Typography>
+
 
                 <Typography textAlign={"justify"} variant="h6">Microbiological Resource Banks are essential
                     infrastructures to preserve and manage
