@@ -19,16 +19,6 @@ const MenuProps = {
     },
 };
 
-// function getStyles(name, personName, theme) {
-//     return {
-//         fontWeight:
-//             personName.indexOf(name) === -1
-//                 ? theme.typography.fontWeightRegular
-//                 : theme.typography.fontWeightMedium,
-//     };
-// }
-
-
 class ItemDropDown extends React.Component {
 
     // theme = useTheme();
@@ -69,7 +59,7 @@ class ItemDropDown extends React.Component {
                     {this.props.names.map((name) => (
                         <MenuItem
                             key={name}
-                            value={name}
+                            value={name == 'Genus species' ? 'Species': name}
 
                         >
                             {name}

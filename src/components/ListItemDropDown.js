@@ -50,7 +50,7 @@ function ListItemDropDown(props) {
             <ItemDropDown ref={inputChild} onEmpty={empty.isCriteria} handleValue={(operationName) => {
                 setCriteria(operationName);
                 setEmpty({...empty, isCriteria: false})
-            }} names={['Species', 'Strain code']}/>
+            }} names={['Genus species', 'Strain code']}/>
 
             <TextField value={nameMic} error={empty.isStrainCode} onChange={(e) => setNameMic(e.target.value)}
                        sx={{mb: '8px', mr: '8px'}}
