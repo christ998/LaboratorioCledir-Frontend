@@ -6,7 +6,7 @@ const requestMicroorganism = {
     },
 
     createOrUpdate: async (parameters) => {
-        const res = await axios.post('/add', parameters)
+        const res = await axios.post('/micro/add', parameters)
         return res
     },
 

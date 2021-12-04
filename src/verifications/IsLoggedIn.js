@@ -1,9 +1,24 @@
+import checkToken from "../requests/checktoken";
+import {useEffect, useState} from "react";
 export default function IsLoggedInAsAdmin({children}) {
 
-   if (!localStorage.getItem('token')){
-       return <></>
-   }
+    const [isToken, setIsToken] = useState(false)
 
-   return children
+    useEffect(async ()=>{
+        const res = await checkToken(localStorage.getItem('token'))
+        if (res) setIsToken(true)
+    }, [])
+
+    function check() {
+
+        if (!isToken) {
+            return <></>
+
+        } else {
+            return children
+        }
+    }
+
+    return check()
 
 }

@@ -77,7 +77,7 @@ export default function ModalInventory(props) {
                 }
                 {someError &&
                 <Box>
-                    <Alert severity="error">Error, no hay conexión</Alert>
+                    <Alert severity="error">Error, something went wrong</Alert>
                 </Box>
                 }
 

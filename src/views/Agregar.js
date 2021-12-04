@@ -1,4 +1,4 @@
-import {Alert, AlertTitle, Box, Button, Grid, Paper, TextField} from "@mui/material";
+import {Alert, AlertTitle, Box, Button, Container, Grid, Paper, TextField} from "@mui/material";
 import {useState} from "react";
 import requestMicroorganism from "../requests/Microorganisms";
 import Header from "../components/Header/Header";
@@ -10,6 +10,7 @@ const {createOrUpdate} = requestMicroorganism
 function Agregar() {
     const [fields, setFields] = useState({});
     const [isCreated, setIsCreated] = useState(false)
+    const [someError, setSomeError] = useState(false)
     const handleValue = (e) => {
         setFields({...fields, [e.target.name]: e.target.value})
     };
@@ -25,7 +26,10 @@ function Agregar() {
                 }, 4500)
             }
         } catch (error) {
-
+            setSomeError(true)
+            setTimeout(()=>{
+                setSomeError(false)
+            }, 3500)
         }
     }
 
@@ -33,10 +37,22 @@ function Agregar() {
         <div>
             <Header/>
             {isCreated &&
-            <Alert>
-                <AlertTitle>Microorganism created successfully</AlertTitle>
-                Strain code - {fields['Strain code']}
-            </Alert>
+                <Container>
+                    <Alert variant={"filled"}>
+                        <AlertTitle>Microorganism created successfully</AlertTitle>
+                        Strain code - {fields['Strain code']}
+                    </Alert>
+                </Container>
+
+            }
+            {someError &&
+                <Container>
+                    <Alert severity={"error"} variant={"filled"}>
+                        <AlertTitle>Something went wrong</AlertTitle>
+                        No token provided
+                    </Alert>
+                </Container>
+
             }
             <Paper sx={{pb: '40px'}}>
                 <Box sx={{mt: 5}} className="container-form">
