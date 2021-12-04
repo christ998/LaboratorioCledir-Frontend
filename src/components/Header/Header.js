@@ -6,6 +6,7 @@ import photo from "../../Assets/Images/Header/header.jpg"
 import {createTheme} from '@mui/material/styles';
 import {indigo} from "@mui/material/colors";
 import checkToken from "../../requests/checktoken";
+import {useNavigate} from "react-router-dom";
 
 const Img = styled('img')({
     display: 'block',
@@ -20,11 +21,18 @@ const theme = createTheme({
 export default function Header() {
 
     const [isToken, setIsToken] = useState(false) // guarda si existe un token valido o no
+    const history = useNavigate()
+
 
     useEffect(async () => {
         const res = await checkToken(localStorage.getItem('token'))
         if (res) setIsToken(true)
     }, [])
+
+    const signOut = () => {
+        localStorage.removeItem('token')
+        history('/homecatalogue')
+    }
 
     function isSignedIn() {
 
@@ -36,7 +44,7 @@ export default function Header() {
         } else {
 
             return (
-                <Link><Button variant="contained" color="primary">Sign out</Button></Link>
+                <Link><Button onClick={signOut} variant="contained" color="primary">Sign out</Button></Link>
 
             )
         }

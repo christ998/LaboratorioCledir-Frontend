@@ -3,6 +3,7 @@ import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import {Grid} from "@mui/material";
 import {useEffect, useState} from "react";
+import checkToken from "../requests/checktoken";
 
 const style = {
     position: 'absolute',
@@ -21,6 +22,25 @@ const style = {
 
 export default function ModalMicroorganism(props) {
     const {handleCloseModal, isOpen, info} = props
+    const [isAdmin, setIsAdmin] = useState(false)
+
+    useEffect(async () => {
+        if (localStorage.getItem('token')) {
+            const res = await checkToken(localStorage.getItem('token'))
+            if (res) {
+                setIsAdmin(true)
+            }
+        }
+    }, [info, isAdmin])
+
+    function filter(item) {
+        if (isAdmin){
+            return item[0] != '_id' && item[0] !== "__v"
+        } else {
+            return item[0] != '_id' && item[0] !== "Samples stock" && item[0] !== "__v"
+        }
+    }
+
 
     return (
         <div>
@@ -35,17 +55,19 @@ export default function ModalMicroorganism(props) {
                         Characteristic
                     </Typography>
                     <Grid container spacing={2} rowSpacing={5} wrap="wrap">
-                        {Object.entries(info).map((item) => (
-                            <>
-                                <Grid item md={6}>
-                                    {item[0]}
-                                </Grid>
-                                <Grid item md={6}>
-                                    {item[1]}
-                                </Grid>
-                            </>
-
-                        ))}
+                        {Object.entries(info).filter(filter).map(item =>
+                            (
+                                <>
+                                    <Grid item md={6}>
+                                        {item[0]}
+                                    </Grid>
+                                    <Grid item md={6}>
+                                        {item[1]}
+                                    </Grid>
+                                </>
+                            )
+                        )
+                        }
                     </Grid>
 
 
