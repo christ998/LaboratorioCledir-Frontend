@@ -41,7 +41,7 @@ export default function ModalInventory(props) {
                     'Samples stock': stock,
                     'Link': link
                 })
-                if (res.status == 200) {
+                if (res.status === 200) {
                     setIsUpdating(false)
                     setIsUpdated(true)
                     setTimeout(() => {

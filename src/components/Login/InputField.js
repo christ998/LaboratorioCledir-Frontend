@@ -6,7 +6,7 @@ export default function InputField(props){
     const { setInput } = props;
 
     const icon = () => {
-        if (props.variant == 'email'){
+        if (props.variant === 'email'){
             return (
                 <>
                     <PersonIcon sx={{my:"8px"}} fontSize={"large"} />
@@ -19,7 +19,7 @@ export default function InputField(props){
                     />
                 </>
             )
-        } else if (props.variant == 'password') {
+        } else if (props.variant === 'password') {
             return (
                 <>
                     <LockIcon sx={{my:"8px"}} fontSize={"large"} />

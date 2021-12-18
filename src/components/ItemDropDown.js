@@ -59,7 +59,7 @@ class ItemDropDown extends React.Component {
                     {this.props.names.map((name) => (
                         <MenuItem
                             key={name}
-                            value={name == 'Genus species' ? 'Species': name}
+                            value={name === 'Genus species' ? 'Species': name}
 
                         >
                             {name}
