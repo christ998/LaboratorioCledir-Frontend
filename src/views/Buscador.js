@@ -4,6 +4,7 @@ import Header from "../components/Header/Header";
 import {useState} from "react";
 import requestMicroorganism from "../requests/Microorganisms";
 import {Box, Paper} from "@mui/material";
+import {Helmet} from "react-helmet";
 
 const {getMicroorganism} = requestMicroorganism
 
@@ -30,7 +31,9 @@ function Buscador() {
 
     return (
         <>
-
+            <Helmet>
+              <title>Buscador - MicroLab</title>
+            </Helmet>
             <Header/>
             <Paper sx={{pb:'70px', pt:'80px'}} >
                 <Box sx={{maxWidth: '800px', mx: 'auto'}}>

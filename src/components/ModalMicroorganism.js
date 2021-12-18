@@ -35,9 +35,9 @@ export default function ModalMicroorganism(props) {
 
     function filter(item) {
         if (isAdmin){
-            return item[0] != '_id' && item[0] !== "__v"
+            return item[0] !== '_id' && item[0] !== "__v"
         } else {
-            return item[0] != '_id' && item[0] !== "Samples stock" && item[0] !== "__v"
+            return item[0] !== '_id' && item[0] !== "Samples stock" && item[0] !== "__v"
         }
     }
 

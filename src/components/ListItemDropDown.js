@@ -17,12 +17,12 @@ function ListItemDropDown(props) {
         let isValid = true
         let emptyFields = {}
 
-        if (criteria == '') {
+        if (criteria === '') {
             emptyFields.isCriteria = true
             isValid = false
         }
 
-        if (nameMic == '') {
+        if (nameMic === '') {
             emptyFields.isStrainCode = true
             isValid = false
         }

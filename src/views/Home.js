@@ -1,8 +1,8 @@
 import {Container, createTheme, Paper, ThemeProvider, Typography} from "@mui/material";
 import "../styles/Home.scss"
 import {styled} from "@mui/material/styles";
-import photo from '../Assets/Images/Home/ufro.png'
-
+import photo from '../Assets/Images/Home/ufro.png';
+import {Helmet} from "react-helmet";
 
 export default function Home() {
     const Img = styled('img')({
@@ -18,7 +18,9 @@ export default function Home() {
     })
     return (
         <><ThemeProvider theme={theme}>
-
+            <Helmet>
+              <title>Home - MicroLab</title>
+            </Helmet>
             <Paper sx={{mx: '0px', display: 'grid', gridTemplateColumns: 'auto auto auto'}}>
                 <Img src={photo}/>
                 <Typography variant="h4" textAlign={"center"}>MICROBIOLOGICAL<br/>

@@ -2,7 +2,7 @@ import {Alert, AlertTitle, Box, Button, Container, Grid, Paper, TextField} from 
 import {useState} from "react";
 import requestMicroorganism from "../requests/Microorganisms";
 import Header from "../components/Header/Header";
-import "../styles/Agregar.scss"
+import "../styles/Agregar.scss";
 
 const {createOrUpdate} = requestMicroorganism
 
@@ -19,11 +19,12 @@ function Agregar() {
         e.preventDefault()
         try {
             const res = await createOrUpdate(fields)
-            if (res.status == 200) {
+            if (res.status === 200) {
                 setIsCreated(true)
                 setTimeout(() => {
                     setIsCreated(false)
                 }, 4500)
+                window.location.href = "/";
             }
         } catch (error) {
             setSomeError(true)

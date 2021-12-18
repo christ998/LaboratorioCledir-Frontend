@@ -93,7 +93,7 @@ export default function ListMicroorganism(props) {
                                             {row['Microorganism Type']}
                                         </TableCell>
                                         <TableCell align="right">
-                                            {row['Link'] != '' ?
+                                            {row['Link'] !== '' ?
                                                 <Link target="_blank" href={row['Link']} rel="noreferrer">{row['Strain code']}</Link>
                                                 :
                                                 row['Strain code']

@@ -4,9 +4,12 @@ export default function IsLoggedInAsAdmin({children}) {
 
     const [isToken, setIsToken] = useState(false)
 
-    useEffect(async ()=>{
-        const res = await checkToken(localStorage.getItem('token'))
-        if (res) setIsToken(true)
+    useEffect(()=>{
+        async function fechToken() {
+          const res = await checkToken(localStorage.getItem('token'))
+          if (res) setIsToken(true)
+        }
+        fechToken();
     }, [])
 
     function check() {

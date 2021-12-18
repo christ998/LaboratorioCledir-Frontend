@@ -3,6 +3,7 @@ import {Alert, Box, Button, Paper} from "@mui/material";
 import {useState} from "react";
 import authenticate from "../requests/User";
 import {useNavigate} from "react-router-dom";
+import {Helmet} from "react-helmet";
 
 function Login() {
     const [email, setEmail] = useState("");
@@ -14,15 +15,15 @@ function Login() {
     const iniciarSesion = async () => {
         try {
             const response = await authenticate(email, password)
-            if (response.status == 200) {
+            if (response.status === 200) {
                 const { data: { token } } = response
                 localStorage.setItem('token', token)
                 history('/homecatalogue')
             }
         } catch (e) {
             e = JSON.parse(JSON.stringify(e))
-            if (e.status == 404) setErrorMessage("Email is not registered")
-            if (e.status == 401) setErrorMessage("Password Incorrect")
+            if (e.status === 404) setErrorMessage("Email is not registered")
+            if (e.status === 401) setErrorMessage("Password Incorrect")
             setTimeout(() => {
                 setErrorMessage('')
             }, 3500)
@@ -31,6 +32,9 @@ function Login() {
 
     return (
         <>
+            <Helmet>
+              <title>Login - MicroLab</title>
+            </Helmet>
             <Box
                 sx={{
                     display: "flex",
