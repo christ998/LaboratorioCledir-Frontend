@@ -7,18 +7,17 @@ import Inventario from "./views/Inventario";
 import Home from "./views/Home";
 import HomeCatalogue from "./views/HomeCatalogue";
 import RedirectIfNotLoggedIn from "./verifications/RedirectIfNotLoggedIn";
+import RedirectIfLoggedIn from "./verifications/RedirectIfLoggedIn";
 
 function App() {
     return (
         <Routes>
-            <Route element={<RedirectIfNotLoggedIn />}>
-              <Route path="/agregar" element={<Agregar/>}/>
-              <Route path="/inventario" element={<Inventario/>}/>
-              <Route path="/home" element={<Home/>}/>
-              <Route path="/homecatalogue" element={<HomeCatalogue/>}/>
-            </Route>
             <Route path="/" element={<Buscador/>}/>
-            <Route path="/login" element={<Login/>}/>
+            <Route path="/login" element={<RedirectIfLoggedIn><Login/></RedirectIfLoggedIn>}/>
+            <Route path="/agregar" element={<RedirectIfNotLoggedIn><Agregar/></RedirectIfNotLoggedIn>}/>
+            <Route path="/inventario" element={<RedirectIfNotLoggedIn><Inventario/></RedirectIfNotLoggedIn>}/>
+            <Route path="/home" element={<RedirectIfNotLoggedIn><Home/></RedirectIfNotLoggedIn>}/>
+            <Route path="/homecatalogue" element={<RedirectIfNotLoggedIn><HomeCatalogue/></RedirectIfNotLoggedIn>}/>
         </Routes>
     );
 }

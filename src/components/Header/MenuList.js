@@ -10,9 +10,11 @@ import '../../styles/MenuList.scss'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import {useState} from "react";
+import { useNavigate } from "react-router-dom";
 
 
 function MenuList() {
+    const navigate = useNavigate();
     const [openHome, setOpenHome] = useState(false)
     const [openBd, setOpenBd] = useState(false)
     const [openSearcher, setOpenSearcher] = useState(false)
@@ -38,7 +40,7 @@ function MenuList() {
                     <ListItemButton>
                         <ListItemText disableTypography={true} sx={fontSize}>Home</ListItemText>
                         <ListItemIcon>
-                            {openHome ? <ExpandLessIcon/> : <ExpandMoreIcon/>}
+                            {openHome ? <ExpandLessIcon/> : <ExpandMoreIcon onclick={() => navigate("/homecatalogue")}/>}
                         </ListItemIcon>
                     </ListItemButton>
                     <ListItemButton onClick={handleClick}>
@@ -50,7 +52,7 @@ function MenuList() {
                         </ListItemIcon>
                     </ListItemButton>
                     <ListItemButton onClick={handleClick}>
-                        <ListItemText disableTypography={true} sx={fontSize} id={3}>Búsqueda</ListItemText>
+                        <ListItemText disableTypography={true} sx={fontSize} id={3} onClick={() => navigate("/")}>Búsqueda</ListItemText>
                         <ListItemIcon>
                             {openSearcher ? <ExpandLessIcon/> : <ExpandMoreIcon/>}
                         </ListItemIcon>
@@ -60,7 +62,7 @@ function MenuList() {
                 <Collapse in={openBd} timeout="auto" unmountOnExit>
                     <List component="div" disablePadding>
                         <ListItemButton sx={{pl: 4}}>
-                            <ListItemText primary="Starred"/>
+                            <ListItemText primary="Agregar" onClick={() => navigate("/agregar")}/>
                         </ListItemButton>
                     </List>
                 </Collapse>
