@@ -46,7 +46,7 @@ export default function HomeCatalogue() {
                             </IsLoggedInAsAdmin>
 
                             <Grid item>
-                                <Link style={aStyle} href="/">
+                                <Link style={aStyle} href="/buscar">
                                     <div className="onHover" style={optionsStyle}>
                                         Search Microorganism
                                     </div>
