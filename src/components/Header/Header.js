@@ -31,7 +31,7 @@ export default function Header() {
 
     const signOut = () => {
         localStorage.removeItem('token')
-        history('/homecatalogue')
+        history('/home')
     }
 
     function isSignedIn() {

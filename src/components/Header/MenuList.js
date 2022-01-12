@@ -38,7 +38,7 @@ function MenuList() {
         <div className="attach">
             <Box sx={{backgroundColor: '#ACDDF3', py: '5px', borderRadius: '9px 9px 0 0', maxWidth: '532px', margin: "auto"}}>
                 <List className="menu-list">
-                    <ListItemButton onClick={() => history("/homecatalogue")}>
+                    <ListItemButton onClick={() => history("/home")}>
                         <ListItemText disableTypography={true} sx={fontSize}>Home</ListItemText>
                         {/*<ListItemIcon>*/}
                         {/*    {openHome ? <ExpandLessIcon/> : <ExpandMoreIcon/>}*/}
