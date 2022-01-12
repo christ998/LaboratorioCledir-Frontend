@@ -50,7 +50,7 @@ export default function Home() {
                     open catalogue for research and teaching, through the request of national and foreign
                     researchers and academic staff, in accordance with current national and international
                     legislation.</Typography><br/>
-                <Typography variant="h6" textAlign="center"><a href="/homecatalogue">Strains Catalogue</a> </Typography><br/>
+                <Typography variant="h6" textAlign="center"><a href="/home">Strains Catalogue</a> </Typography><br/>
                 <Typography variant="h6">The microbial long-term preservation is available as a service at the mRB-UFRO.
                     Please,
                     contact us for more information: brmb-ufro@ufrontera.cl (+56) 45 259 6726.</Typography>

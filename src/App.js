@@ -12,12 +12,12 @@ import RedirectIfLoggedIn from "./verifications/RedirectIfLoggedIn";
 function App() {
     return (
         <Routes>
-            <Route path="/" element={<Buscador/>}/>
+            <Route path="/" element={<Home/>}/>
             <Route path="/login" element={<RedirectIfLoggedIn><Login/></RedirectIfLoggedIn>}/>
             <Route path="/agregar" element={<RedirectIfNotLoggedIn><Agregar/></RedirectIfNotLoggedIn>}/>
             <Route path="/inventario" element={<RedirectIfNotLoggedIn><Inventario/></RedirectIfNotLoggedIn>}/>
-            <Route path="/home" element={<RedirectIfNotLoggedIn><Home/></RedirectIfNotLoggedIn>}/>
-            <Route path="/homecatalogue" element={<RedirectIfNotLoggedIn><HomeCatalogue/></RedirectIfNotLoggedIn>}/>
+            <Route path="/home" element={<HomeCatalogue/>}/>
+            <Route path="/buscar" element={<Buscador/>}/>
         </Routes>
     );
 }
