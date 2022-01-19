@@ -18,7 +18,7 @@ function Login() {
             if (response.status === 200) {
                 const { data: { token } } = response
                 localStorage.setItem('token', token)
-                history('/homecatalogue')
+                history('/home')
             }
         } catch (e) {
             e = JSON.parse(JSON.stringify(e))

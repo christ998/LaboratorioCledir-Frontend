@@ -32,6 +32,7 @@ export default function Header() {
     const signOut = () => {
         localStorage.removeItem('token')
         history('/home')
+        window.location.reload()
     }
 
     function isSignedIn() {
