@@ -12,7 +12,7 @@ export default function Home() {
 
     const theme = createTheme({
         typography: {
-            fontFamily: ['Inter'],
+            fontFamily: ['Open sans'],
 
         }
     })

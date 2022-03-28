@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import MenuList from "./MenuList";
-import {Box, Button, CardMedia, Link, ThemeProvider} from "@mui/material";
+import {Box, Button, Link, ThemeProvider} from "@mui/material";
 import {styled} from '@mui/material/styles';
 import photo from "../../Assets/Images/Header/header.jpg"
 import {createTheme} from '@mui/material/styles';
@@ -10,6 +10,8 @@ import {useNavigate} from "react-router-dom";
 
 const Img = styled('img')({
     display: 'block',
+    objectFit: "cover",
+    width: "100%"
 
 });
 
