@@ -58,7 +58,7 @@ function ListItemDropDown(props) {
 
             <Box sx={{my: "auto"}}>
                 <Button onClick={search} variant="contained" startIcon={<SearchIcon/>} color={"error"}
-                        sx={{mr: '10px'}}>Buscar</Button>
+                        sx={{mr: '10px'}}>Search</Button>
                 <Button onClick={reset} className="btn-hover" variant="outlined"
                         startIcon={<DeleteOutlineIcon/>}>Reset</Button>
             </Box>
