@@ -72,7 +72,7 @@ class ItemDropDown extends React.Component {
     render() {
         return (
             <div>
-                <Box width={300} textAlign={"center"} fontFamily={"Montserrat"} fontSize={16}>Criterio</Box>
+                <Box width={300} textAlign={"center"} fontFamily={"Montserrat"} fontSize={16}>Criteria</Box>
                 {this.body()}
 
             </div>
