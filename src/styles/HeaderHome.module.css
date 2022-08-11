@@ -1,0 +1,19 @@
+
+    @media only screen and (max-width: 1700px) {
+        .header_responsive{
+            display: flex;
+            flex-direction: column;
+        }
+        .logo_centro {
+            position: relative;
+            text-align: center;
+        }
+
+    }
+
+    @media only screen and (min-width: 1701px){
+        .logo_centro {
+            position: absolute;
+        }
+    }
+

@@ -1,19 +1,14 @@
-import {Container, createTheme, Paper, ThemeProvider, Typography} from "@mui/material";
+import {Container, createTheme, ThemeProvider, Typography} from "@mui/material";
 import "../styles/Home.scss"
-import {styled} from "@mui/material/styles";
-import photo from '../Assets/Images/Home/ufro.png';
 import {Helmet} from "react-helmet";
+import HeaderHome from "../components/Header/HeaderHome";
 
 export default function Home() {
-    const Img = styled('img')({
-        maxHeight: '130px',
-        marginLeft: '30px'
-    });
+
 
     const theme = createTheme({
         typography: {
             fontFamily: ['Open sans'],
-
         }
     })
     return (
@@ -21,15 +16,10 @@ export default function Home() {
             <Helmet>
               <title>Home - MicroLab</title>
             </Helmet>
-            <Paper sx={{mx: '0px', display: 'grid', gridTemplateColumns: 'auto auto auto'}}>
-                <Img src={photo}/>
-                <Typography variant="h4" textAlign={"center"}>MICROBIOLOGICAL<br/>
-                    RESOURCE BANK<br/>
-                    UNIVERSIDAD DE LA FRONTERA mRB-UFRO
-                </Typography>
-            </Paper>
-            <Container>
 
+            <HeaderHome/>
+
+            <Container>
 
                 <Typography textAlign={"justify"} variant="h6">Microbiological Resource Banks are essential
                     infrastructures to preserve and manage
