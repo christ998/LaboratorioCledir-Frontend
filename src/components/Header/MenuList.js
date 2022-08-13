@@ -3,12 +3,10 @@ import {
     Collapse,
     List,
     ListItemButton,
-    ListItemIcon,
     ListItemText,
 } from "@mui/material";
 import '../../styles/MenuList.scss'
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import ExpandLessIcon from '@mui/icons-material/ExpandLess';
+
 import {useState} from "react";
 import {useNavigate} from "react-router-dom";
 
@@ -20,7 +18,9 @@ function MenuList() {
     const history = useNavigate();
 
     const fontSize = {
-        fontSize: '18px'
+        fontSize: '13px',
+        fontFamily: 'Roboto',
+        fontWeight: 500,
     }
 
     const handleClick = (event) => {
@@ -35,11 +35,11 @@ function MenuList() {
         }
     }
     return (
-        <div className="attach">
-            <Box sx={{backgroundColor: '#ACDDF3', py: '5px', borderRadius: '9px 9px 0 0', maxWidth: '532px', margin: "auto"}}>
+        <div className="">
+            <Box sx={{color: '#fcfcfc'}}>
                 <List className="menu-list">
-                    <ListItemButton onClick={() => history("/home")}>
-                        <ListItemText disableTypography={true} sx={fontSize}>Home</ListItemText>
+                    <ListItemButton onClick={() => history("/home")} sx={{borderRight: '1px solid rgba(0,0,0,.1)'}}>
+                        <ListItemText disableTypography={true} sx={fontSize}>HOME</ListItemText>
                         {/*<ListItemIcon>*/}
                         {/*    {openHome ? <ExpandLessIcon/> : <ExpandMoreIcon/>}*/}
                         {/*</ListItemIcon>*/}
@@ -53,7 +53,7 @@ function MenuList() {
                     {/*    </ListItemIcon>*/}
                     {/*</ListItemButton>*/}
                     <ListItemButton onClick={() => history('/buscar')}>
-                        <ListItemText disableTypography={true} sx={fontSize} id={3}>Search</ListItemText>
+                        <ListItemText disableTypography={true} sx={fontSize} id={3}>SEARCH</ListItemText>
                         {/*<ListItemIcon>*/}
                         {/*    {openSearcher ? <ExpandLessIcon/> : <ExpandMoreIcon/>}*/}
                         {/*</ListItemIcon>*/}

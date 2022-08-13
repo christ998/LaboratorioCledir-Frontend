@@ -1,14 +1,18 @@
 import checkToken from "../requests/checktoken";
 import {useEffect, useState} from "react";
+
 export default function IsLoggedInAsAdmin({children}) {
 
     const [isToken, setIsToken] = useState(false)
 
-    useEffect(()=>{
+    useEffect(() => {
         async function fechToken() {
-          const res = await checkToken(localStorage.getItem('token'))
-          if (res) setIsToken(true)
+            if (localStorage.getItem('token')) {
+                const res = await checkToken(localStorage.getItem('token'))
+                if (res) setIsToken(true)
+            }
         }
+
         fechToken();
     }, [])
 

@@ -1,4 +1,5 @@
 import axios from "./axios";
+
 const requestMicroorganism = {
     getMicroorganism: async (parameters) => {
         const res = await axios.get("/micparticular", parameters)
